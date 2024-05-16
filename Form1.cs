@@ -4,7 +4,8 @@ namespace tomato_calorimeter
     {
         public Form1()
         {
-            InitializeComponent();
-        }
+            ///
+            InitializeComponent(); 
+        }    
     }
 }
