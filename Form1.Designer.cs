@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             pictureBox1 = new PictureBox();
-            textBox1 = new TextBox();
+            TempOfMetalTextbox = new TextBox();
             label1 = new Label();
-            comboBox1 = new ComboBox();
+            MetalComboBox = new ComboBox();
             label2 = new Label();
             label3 = new Label();
             RoomTemperatureTextbox = new TextBox();
@@ -39,7 +40,11 @@
             MassOfWaterTextbox = new TextBox();
             label5 = new Label();
             WaterSpecificHeatTextbox = new TextBox();
-            comboBox2 = new ComboBox();
+            button1 = new Button();
+            label6 = new Label();
+            MassOfMetalTextbox = new TextBox();
+            SpecificUnit = new ComboBox();
+            CalculatedHeat = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -54,14 +59,14 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // TempOfMetalTextbox
             // 
-            textBox1.BackColor = Color.LightCoral;
-            textBox1.Location = new Point(310, 21);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 1;
-            textBox1.Text = "temp of metal";
+            TempOfMetalTextbox.BackColor = Color.PaleTurquoise;
+            TempOfMetalTextbox.Location = new Point(310, 21);
+            TempOfMetalTextbox.Name = "TempOfMetalTextbox";
+            TempOfMetalTextbox.Size = new Size(100, 23);
+            TempOfMetalTextbox.TabIndex = 1;
+            TempOfMetalTextbox.Text = "22";
             // 
             // label1
             // 
@@ -74,15 +79,15 @@
             label1.TabIndex = 2;
             label1.Text = "T of Metal";
             // 
-            // comboBox1
+            // MetalComboBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Tungstun", "Titanium", "Copper", "Zinc" });
-            comboBox1.Location = new Point(515, 21);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 3;
-            comboBox1.Text = "nyanya";
+            MetalComboBox.FormattingEnabled = true;
+            MetalComboBox.Items.AddRange(new object[] { "Tungstun", "Titanium", "Copper", "Zinc", "Iron" });
+            MetalComboBox.Location = new Point(515, 21);
+            MetalComboBox.Name = "MetalComboBox";
+            MetalComboBox.Size = new Size(121, 23);
+            MetalComboBox.TabIndex = 3;
+            MetalComboBox.Text = "nyanya";
             // 
             // label2
             // 
@@ -105,7 +110,7 @@
             // 
             // RoomTemperatureTextbox
             // 
-            RoomTemperatureTextbox.BackColor = Color.LightCoral;
+            RoomTemperatureTextbox.BackColor = Color.Violet;
             RoomTemperatureTextbox.Location = new Point(12, 21);
             RoomTemperatureTextbox.Name = "RoomTemperatureTextbox";
             RoomTemperatureTextbox.Size = new Size(100, 23);
@@ -119,9 +124,9 @@
             label4.FlatStyle = FlatStyle.Flat;
             label4.Location = new Point(14, 52);
             label4.Name = "label4";
-            label4.Size = new Size(82, 15);
+            label4.Size = new Size(100, 15);
             label4.TabIndex = 8;
-            label4.Text = "Mass of Water";
+            label4.Text = "Mass of Water (g)";
             // 
             // MassOfWaterTextbox
             // 
@@ -130,7 +135,7 @@
             MassOfWaterTextbox.Name = "MassOfWaterTextbox";
             MassOfWaterTextbox.Size = new Size(100, 23);
             MassOfWaterTextbox.TabIndex = 7;
-            MassOfWaterTextbox.Text = "100g";
+            MassOfWaterTextbox.Text = "100";
             // 
             // label5
             // 
@@ -152,34 +157,86 @@
             WaterSpecificHeatTextbox.TabIndex = 9;
             WaterSpecificHeatTextbox.Text = "1.00";
             // 
-            // comboBox2
+            // button1
             // 
-            comboBox2.BackColor = Color.LightCoral;
-            comboBox2.FlatStyle = FlatStyle.System;
-            comboBox2.ForeColor = SystemColors.WindowText;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "°C", "°F", "K" });
-            comboBox2.Location = new Point(110, 21);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(35, 23);
-            comboBox2.TabIndex = 11;
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button1.BackColor = SystemColors.ActiveCaption;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.Stretch;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(713, 415);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 13;
+            button1.Text = "calculate";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.White;
+            label6.FlatStyle = FlatStyle.Flat;
+            label6.Location = new Point(689, 52);
+            label6.Name = "label6";
+            label6.Size = new Size(99, 15);
+            label6.TabIndex = 15;
+            label6.Text = "Mass of Metal (g)";
+            // 
+            // MassOfMetalTextbox
+            // 
+            MassOfMetalTextbox.BackColor = Color.PaleTurquoise;
+            MassOfMetalTextbox.Location = new Point(688, 66);
+            MassOfMetalTextbox.Name = "MassOfMetalTextbox";
+            MassOfMetalTextbox.Size = new Size(100, 23);
+            MassOfMetalTextbox.TabIndex = 14;
+            MassOfMetalTextbox.Text = "20";
+            // 
+            // SpecificUnit
+            // 
+            SpecificUnit.BackColor = Color.LightCoral;
+            SpecificUnit.FlatStyle = FlatStyle.System;
+            SpecificUnit.ForeColor = SystemColors.WindowText;
+            SpecificUnit.FormattingEnabled = true;
+            SpecificUnit.Items.AddRange(new object[] { "Joule", "calorie" });
+            SpecificUnit.Location = new Point(110, 112);
+            SpecificUnit.Name = "SpecificUnit";
+            SpecificUnit.Size = new Size(35, 23);
+            SpecificUnit.TabIndex = 12;
+            SpecificUnit.Click += SpecificUnit_Click;
+            // 
+            // CalculatedHeat
+            // 
+            CalculatedHeat.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            CalculatedHeat.AutoSize = true;
+            CalculatedHeat.BackColor = Color.FromArgb(255, 192, 192);
+            CalculatedHeat.Location = new Point(669, 423);
+            CalculatedHeat.Name = "CalculatedHeat";
+            CalculatedHeat.Size = new Size(32, 15);
+            CalculatedHeat.TabIndex = 16;
+            CalculatedHeat.Text = "Heat";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label3);
-            Controls.Add(comboBox2);
-            Controls.Add(RoomTemperatureTextbox);
+            Controls.Add(CalculatedHeat);
+            Controls.Add(label6);
+            Controls.Add(MassOfMetalTextbox);
+            Controls.Add(button1);
             Controls.Add(label5);
+            Controls.Add(SpecificUnit);
+            Controls.Add(label3);
+            Controls.Add(RoomTemperatureTextbox);
             Controls.Add(WaterSpecificHeatTextbox);
             Controls.Add(label4);
             Controls.Add(MassOfWaterTextbox);
             Controls.Add(label2);
-            Controls.Add(comboBox1);
+            Controls.Add(MetalComboBox);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(TempOfMetalTextbox);
             Controls.Add(pictureBox1);
             Name = "Form1";
             Text = "Form1";
@@ -191,9 +248,9 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private TextBox textBox1;
+        private TextBox TempOfMetalTextbox;
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox MetalComboBox;
         private Label label2;
         private Label label3;
         private TextBox RoomTemperatureTextbox;
@@ -201,6 +258,10 @@
         private TextBox MassOfWaterTextbox;
         private Label label5;
         private TextBox WaterSpecificHeatTextbox;
-        private ComboBox comboBox2;
+        private Button button1;
+        private Label label6;
+        private TextBox MassOfMetalTextbox;
+        private ComboBox SpecificUnit;
+        private Label CalculatedHeat;
     }
 }
